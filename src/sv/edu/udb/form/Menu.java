@@ -42,6 +42,13 @@ public class Menu extends JFrame{
                 retiro.setVisible(true);
             }
         });
+        btnShowAbonoCuenta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame abono = new Abono(clienteBeans);
+                abono.setVisible(true);
+            }
+        });
     }
 
     private void crearCuenta(){

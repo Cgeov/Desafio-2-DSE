@@ -38,15 +38,4 @@ public class Retiro extends JFrame {
             }
         });
     }
-
-
-    private void retirarEfectivo(){
-        System.out.println(cmbCuentasRetiro.getSelectedIndex() +" -------- "+ cmbCuentasRetiro.getSelectedItem());
-
-        if(Float.parseFloat(txtRetiroAmount.getText()) >  cmbCuentasRetiro.getSelectedIndex() ){
-            JOptionPane.showMessageDialog(null,"El Monto a retirar debe ser menor al Saldo de la cuenta");
-        }else{
-
-        }
-    }
 }
