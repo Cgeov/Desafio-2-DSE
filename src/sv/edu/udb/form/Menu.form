@@ -16,7 +16,7 @@
           <text value="Crear Cuenta"/>
         </properties>
       </component>
-      <component id="67209" class="javax.swing.JButton" binding="retirarDeUnaCuentaButton" default-binding="true">
+      <component id="67209" class="javax.swing.JButton" binding="btnShowRetirarCuenta">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -24,7 +24,7 @@
           <text value="Retirar de una cuenta "/>
         </properties>
       </component>
-      <component id="5cc43" class="javax.swing.JButton" binding="abonarAUnaCuentaButton" default-binding="true">
+      <component id="5cc43" class="javax.swing.JButton" binding="btnShowAbonoCuenta">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

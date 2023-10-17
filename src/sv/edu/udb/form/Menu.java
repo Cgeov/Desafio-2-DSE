@@ -12,8 +12,8 @@ import java.awt.event.ActionListener;
 
 public class Menu extends JFrame{
     private JButton btnAnadirCuentaMenu;
-    private JButton retirarDeUnaCuentaButton;
-    private JButton abonarAUnaCuentaButton;
+    private JButton btnShowRetirarCuenta;
+    private JButton btnShowAbonoCuenta;
     private JButton verCuentaEspecificaButton;
     private JButton verTodasMisCuentasButton;
     private JButton verTransaccionesButton;
@@ -33,6 +33,13 @@ public class Menu extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 crearCuenta();
+            }
+        });
+        btnShowRetirarCuenta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame retiro = new Retiro(clienteBeans);
+                retiro.setVisible(true);
             }
         });
     }

@@ -1,8 +1,10 @@
 package sv.edu.udb.datos;
 
+import sv.edu.udb.beans.ClienteBeans;
 import sv.edu.udb.beans.CuentaBeans;
 import sv.edu.udb.util.Conexion;
 
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 
@@ -14,6 +16,10 @@ public class CuentasDatos {
     private final String SQL_SELECT_CUENTA = "SELECT a.id_cuenta, b.titular, a.saldo FROM cuentas a  INNER JOIN clientes b ON a.id_cliente = b.id_cliente WHERE a.id_cuenta= ?";
 
     private final String SQL_SELECT_ALL = "SELECT a.id_cuenta, b.titular, a.saldo FROM cuentas a  INNER JOIN clientes b ON a.id_cliente = b.id_cliente WHERE a.id_cliente= ? ORDER BY a.id_cuenta";
+
+    private final String SQL_SELECT_CUENTA_CBM =  "SELECT saldo, id_cuenta from cuentas WHERE id_cliente = ? ORDER BY id_cuenta";
+
+    private final String SQL_SELECT_SALDO=  "SELECT saldo from cuentas WHERE id_cuenta = ?";
 
     public int insert(CuentaBeans cuentaBeans) {
         Connection conn = null;
@@ -71,8 +77,6 @@ public class CuentasDatos {
         return foundUSer;
     }
 
-
-
     public DefaultTableModel selectAll(int id_cliente){
         DefaultTableModel dtm = new DefaultTableModel();
         Connection conn = null;
@@ -106,4 +110,71 @@ public class CuentasDatos {
         return dtm;
     }
 
+    public DefaultComboBoxModel selectCuentas(ClienteBeans clienteBeans){
+        DefaultComboBoxModel dtm = new DefaultComboBoxModel();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(SQL_SELECT_CUENTA_CBM);
+            stmt.setInt(1, clienteBeans.getIdCliente());
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                dtm.addElement(rs.getObject(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+        return dtm;
+    }
+
+
+    public float getsaldo(String id_cuenta){
+        float saldo = 0;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(SQL_SELECT_SALDO);
+            stmt.setString(1, id_cuenta);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                saldo = rs.getFloat(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+        return saldo;
+    }
+
+    public int update(String id_cuenta, float saldo) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows = 0;
+        try {
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(SQL_UPDATE);
+            int index = 1;
+            stmt.setFloat(index++, saldo);
+            stmt.setString(index, id_cuenta);
+            rows = stmt.executeUpdate();
+            System.out.println("Registros actualizados:" + rows);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+        return rows;
+    }
 }
