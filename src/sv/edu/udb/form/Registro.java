@@ -27,7 +27,12 @@ public class Registro extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 adicionCliente();
+                JFrame login = new Login();
+                login.setVisible(true);
+                dispose();
             }
+
+
         });
     }
 
@@ -52,6 +57,8 @@ public class Registro extends JFrame{
         clienteBeans.setPINCliente(PIN);
 
         clientesDatos.insert(clienteBeans);
+
+        JOptionPane.showMessageDialog(null, "Su pin es: " + PIN);
     }
 
     public int generarNumeroAleatorio() {

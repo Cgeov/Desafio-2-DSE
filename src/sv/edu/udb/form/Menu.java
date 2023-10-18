@@ -40,6 +40,7 @@ public class Menu extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 JFrame retiro = new Retiro(clienteBeans);
                 retiro.setVisible(true);
+                dispose();
             }
         });
         btnShowAbonoCuenta.addActionListener(new ActionListener() {
@@ -47,6 +48,15 @@ public class Menu extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 JFrame abono = new Abono(clienteBeans);
                 abono.setVisible(true);
+                dispose();
+            }
+        });
+        verCuentaEspecificaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VerCuenta verCuenta = new VerCuenta(clienteBeans);
+                verCuenta.setVisible(true);
+                dispose();
             }
         });
     }

@@ -25,6 +25,15 @@ public class Login extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 validateClient();
+                dispose();
+            }
+        });
+        btnCrearUsuarioLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame registro = new Registro();
+                registro.setVisible(true);
+                dispose();
             }
         });
     }

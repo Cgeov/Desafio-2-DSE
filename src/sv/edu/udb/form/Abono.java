@@ -25,12 +25,23 @@ public class Abono extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 float saldo = cuentasDatos.getsaldo(cmbCuentaAbono.getSelectedItem().toString());
-                if(Float.parseFloat(txtAbonoAmount.getText()) <  0){
-                    JOptionPane.showMessageDialog(null,"El Monto a abonar debe ser mayor a 0");
-                }else{
-                    float saldoNow = saldo + Float.parseFloat(txtAbonoAmount.getText());;
-                    cuentasDatos.update(cmbCuentaAbono.getSelectedItem().toString(),saldoNow);
-                    JOptionPane.showMessageDialog(null,"Se realizó un abono por $" + Float.parseFloat(txtAbonoAmount.getText()) + " su nuevo saldo es de: $"+ saldoNow);
+                String strmonto = txtAbonoAmount.getText();
+                boolean HasNoNumber = strmonto.matches("^[^0-9]*$");
+
+                if(strmonto.isEmpty() || HasNoNumber){
+                    JOptionPane.showMessageDialog(null, "Los datos no pueden ser vacíos ni letras");
+                }else {
+                    float monto = Float.parseFloat(txtAbonoAmount.getText());
+                    if (monto<0){
+                        JOptionPane.showMessageDialog(null,"El Monto a abonar debe ser mayor a 0");
+                    }else{
+                        float saldoNow = saldo + monto;
+                        cuentasDatos.update(cmbCuentaAbono.getSelectedItem().toString(),saldoNow);
+                        JOptionPane.showMessageDialog(null,"Se realizó un abono por $" + monto + " su nuevo saldo es de: $"+ saldoNow);
+                        JFrame menu = new Menu(clienteBeans);
+                        menu.setVisible(true);
+                        dispose();
+                    }
                 }
             }
         });

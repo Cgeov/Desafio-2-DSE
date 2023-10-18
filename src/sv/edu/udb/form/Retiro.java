@@ -28,12 +28,31 @@ public class Retiro extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 float saldo = cuentasDatos.getsaldo(cmbCuentasRetiro.getSelectedItem().toString());
-                if(Float.parseFloat(txtRetiroAmount.getText()) >  saldo){
-                    JOptionPane.showMessageDialog(null,"El Monto a retirar debe ser menor al Saldo de la cuenta");
-                }else{
-                    float saldoNow = saldo - Float.parseFloat(txtRetiroAmount.getText());;
-                    cuentasDatos.update(cmbCuentasRetiro.getSelectedItem().toString(),saldoNow);
-                    JOptionPane.showMessageDialog(null,"Se realizó un retiro por $" + Float.parseFloat(txtRetiroAmount.getText()) + " su nuevo saldo es de: $"+ saldoNow);
+
+                String strmonto = txtRetiroAmount.getText();
+
+                boolean HasNoNumber = strmonto.matches("^[^0-9]*$");
+
+                //Validación no letras ni cadena vacía
+                if (strmonto.isEmpty() || HasNoNumber){
+                    JOptionPane.showMessageDialog(null, "Los datos no pueden ser vacíos ni letras");
+                }else {
+                    float monto = Float.parseFloat(txtRetiroAmount.getText());
+                    if(( monto >  saldo)){
+                        JOptionPane.showMessageDialog(null,"El Monto a retirar debe ser menor al Saldo de la cuenta, revise los datos ingresados");
+                    }else{
+                        float saldoNow = saldo - monto;;
+                        cuentasDatos.update(cmbCuentasRetiro.getSelectedItem().toString(),saldoNow);
+
+                        JOptionPane.showMessageDialog(null,"Se realizó un retiro por $" + monto + " su nuevo saldo es de: $"+ saldoNow);
+
+                        //Regresando al menu
+                        JFrame menu = new Menu(clienteBeans);
+                        menu.setVisible(true);
+                        dispose();
+
+
+                    }
                 }
             }
         });

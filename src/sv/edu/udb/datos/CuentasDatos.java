@@ -77,6 +77,45 @@ public class CuentasDatos {
         return foundUSer;
     }
 
+    //Regresa cueta consultada
+    public DefaultTableModel selectCuentatbl(String id_cuenta){
+
+        DefaultTableModel dtm = new DefaultTableModel();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(SQL_SELECT_CUENTA);
+            stmt.setString(1, id_cuenta);
+            rs = stmt.executeQuery();
+            ResultSetMetaData meta = rs.getMetaData();
+            int numeroCols = meta.getColumnCount();
+            System.out.println("Ejecutando query: " + SQL_SELECT_CUENTA);
+            System.out.println(stmt);
+            for (int i = 1; i<=numeroCols; i++){
+                dtm.addColumn(meta.getColumnLabel(i));
+            }
+            while (rs.next()){
+                Object[] fila = new Object[numeroCols];
+                for (int i =0; i < numeroCols; i++ ){
+                    fila[i] = rs.getObject(i+1);
+                }
+                dtm.addRow(fila);
+            }
+
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            Conexion.close(rs);
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+        return dtm;
+    }
+
     public DefaultTableModel selectAll(int id_cliente){
         DefaultTableModel dtm = new DefaultTableModel();
         Connection conn = null;
