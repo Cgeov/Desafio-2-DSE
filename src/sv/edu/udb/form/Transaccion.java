@@ -27,7 +27,7 @@ public class Transaccion extends JFrame{
         super();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(pnlTransacciones);
-        this.setMinimumSize(new Dimension(600, 500));
+        this.setMinimumSize(new Dimension(400, 500));
         this.setLocationRelativeTo(getParent());
 
         cbmCuentasTransaccion.setModel(cuentasDatos.selectCuentas(clienteBeans));

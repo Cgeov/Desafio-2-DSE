@@ -21,15 +21,23 @@ public class Registro extends JFrame{
         super();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(pnlRegistro);
-        this.setMinimumSize(new Dimension(600, 500));
+        this.setMinimumSize(new Dimension(350, 400));
         this.setLocationRelativeTo(getParent());
         btnCrearCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                adicionCliente();
-                JFrame login = new Login();
-                login.setVisible(true);
-                dispose();
+
+                String titular = txtNombreCreacion.getText();
+                String DUI = txtDUICreacion.getText();
+
+                if (titular.isEmpty() || DUI.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Los campos no deben estar vacíos");
+                }else {
+                    adicionCliente();
+                    JFrame login = new Login();
+                    login.setVisible(true);
+                    dispose();
+                }
             }
 
 

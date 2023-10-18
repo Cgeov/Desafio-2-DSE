@@ -15,6 +15,7 @@ public class Retiro extends JFrame {
     private JTextField txtRetiroAmount;
     private JButton btnRetirar;
     private JPanel pnlRetiro;
+    private JButton btnMenu;
 
     CuentasDatos cuentasDatos = new CuentasDatos();
     TransacionesDatos transacionesDatos = new TransacionesDatos();
@@ -24,7 +25,7 @@ public class Retiro extends JFrame {
         super();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(pnlRetiro);
-        this.setMinimumSize(new Dimension(600, 500));
+        this.setMinimumSize(new Dimension(400, 500));
         this.setLocationRelativeTo(getParent());
         cmbCuentasRetiro.setModel(cuentasDatos.selectCuentas(clienteBeans));
         btnRetirar.addActionListener(new ActionListener() {
@@ -58,6 +59,14 @@ public class Retiro extends JFrame {
 
                     }
                 }
+            }
+        });
+        btnMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Menu menu = new Menu(clienteBeans);
+                menu.setVisible(true);
+                dispose();
             }
         });
     }

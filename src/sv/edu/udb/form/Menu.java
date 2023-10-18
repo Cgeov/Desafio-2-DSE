@@ -26,7 +26,7 @@ public class Menu extends JFrame{
         super();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(pnlMenu);
-        this.setMinimumSize(new Dimension(600, 500));
+        this.setMinimumSize(new Dimension(400, 500));
         this.setLocationRelativeTo(getParent());
         clienteBeans = clienteBeansAlredy;
         btnAnadirCuentaMenu.addActionListener(new ActionListener() {
@@ -78,6 +78,14 @@ public class Menu extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 Transaccion transaccion = new Transaccion(clienteBeans);
                 transaccion.setVisible(true);
+                dispose();
+            }
+        });
+        salirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Login login = new Login();
+                login.setVisible(true);
                 dispose();
             }
         });

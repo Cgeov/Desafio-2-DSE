@@ -1,48 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="sv.edu.udb.form.VerCuenta">
-  <grid id="27dc6" binding="pnlVerCuenta" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="pnlVerCuenta" layout-manager="GridLayoutManager" row-count="9" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-1644316"/>
+    </properties>
     <border type="none"/>
     <children>
-      <component id="345c9" class="javax.swing.JLabel" binding="lblVerCuenta">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Ver Cuenta."/>
-        </properties>
-      </component>
-      <component id="632ed" class="javax.swing.JComboBox" binding="cmbCuentas">
-        <constraints>
-          <grid row="1" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="d9a00" class="javax.swing.JLabel" binding="lblCuentas">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Cuentas"/>
-        </properties>
-      </component>
       <component id="24fe" class="javax.swing.JButton" binding="btnConsultar">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-14145250"/>
+          <font name="Bookshelf Symbol 7" size="14" style="0"/>
+          <foreground color="-1"/>
           <text value="Consultar"/>
         </properties>
       </component>
       <scrollpane id="c78aa">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Bookshelf Symbol 7" size="14" style="0"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="7598" class="javax.swing.JTable" binding="tblDatos">
@@ -51,14 +36,56 @@
           </component>
         </children>
       </scrollpane>
-      <component id="9b3c5" class="javax.swing.JButton" binding="btnMenu">
+      <component id="d9a00" class="javax.swing.JLabel" binding="lblCuentas">
         <constraints>
-          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Bookshelf Symbol 7" size="16" style="0"/>
+          <text value="Cuentas"/>
+        </properties>
+      </component>
+      <component id="632ed" class="javax.swing.JComboBox" binding="cmbCuentas">
+        <constraints>
+          <grid row="2" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="9b3c5" class="javax.swing.JButton" binding="btnMenu">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14145250"/>
+          <font name="Bookshelf Symbol 7" size="14" style="0"/>
+          <foreground color="-1"/>
           <text value="Menu"/>
         </properties>
       </component>
+      <component id="46760" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Bookshelf Symbol 7" size="20" style="1"/>
+          <text value="Detalle de cuenta"/>
+        </properties>
+      </component>
+      <hspacer id="9a75d">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="e6fa2">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <vspacer id="91bf9">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
     </children>
   </grid>
 </form>

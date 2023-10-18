@@ -16,8 +16,9 @@ public class Abono extends JFrame{
     private JComboBox cmbCuentaAbono;
     private JButton btnAbonar;
     private JPanel jpnAbono;
+    private JButton btnMenu;
     CuentasDatos cuentasDatos = new CuentasDatos();
-    CuentaBeans cuentaBeans = new CuentaBeans();
+
     TransacionesDatos transacionesDatos = new TransacionesDatos();
 
     String tipo_Transaccion = "Abono";
@@ -25,7 +26,7 @@ public class Abono extends JFrame{
         super();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(jpnAbono);
-        this.setMinimumSize(new Dimension(600, 500));
+        this.setMinimumSize(new Dimension(400, 500));
         this.setLocationRelativeTo(getParent());
         cmbCuentaAbono.setModel(cuentasDatos.selectCuentas(clienteBeans));
 
@@ -52,6 +53,15 @@ public class Abono extends JFrame{
                         dispose();
                     }
                 }
+            }
+        });
+        btnMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Menu menu = new Menu(clienteBeans);
+                menu.setVisible(true);
+                dispose();
+
             }
         });
     }
