@@ -77,7 +77,7 @@ public class CuentasDatos {
         return foundUSer;
     }
 
-    //Regresa cueta consultada
+    //Regresa cuenta consultada
     public DefaultTableModel selectCuentatbl(String id_cuenta){
 
         DefaultTableModel dtm = new DefaultTableModel();

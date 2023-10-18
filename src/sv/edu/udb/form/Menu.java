@@ -59,6 +59,20 @@ public class Menu extends JFrame{
                 dispose();
             }
         });
+        verTodasMisCuentasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        verTodasMisCuentasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VerCuentas verCuentas = new VerCuentas(clienteBeans);
+                verCuentas.setVisible(true);
+                dispose();
+            }
+        });
     }
 
     private void crearCuenta(){

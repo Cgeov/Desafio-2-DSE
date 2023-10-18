@@ -9,46 +9,36 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VerCuenta extends JFrame{
-    private JLabel lblVerCuenta;
-    private JComboBox cmbCuentas;
-    private JLabel lblCuentas;
-    private JTable tblDatos;
-    private JButton btnConsultar;
+
+
+public class VerCuentas extends JFrame {
+    private JLabel lblVerTodasCuentas;
+    private JTable tblCuentas;
     private JButton btnMenu;
-    private JPanel pnlVerCuenta;
+    private JScrollPane scrollTable;
+    private JPanel pnlVerCuentas;
 
     CuentasDatos cuentasDatos = new CuentasDatos();
     DefaultTableModel modelo = null;
 
-    public VerCuenta(ClienteBeans clienteBeans) {
-
+    public VerCuentas(ClienteBeans clienteBeans){
         super();
-        JOptionPane.showMessageDialog(null, clienteBeans.toString());
+
+        int id_cliente = clienteBeans.getIdCliente();
+        //JOptionPane.showMessageDialog(null, clienteBeans.getIdCliente());
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(pnlVerCuenta);
+        this.setContentPane(pnlVerCuentas);
         this.setMinimumSize(new Dimension(600, 300));
         this.setLocationRelativeTo(getParent());
-        cmbCuentas.setModel(cuentasDatos.selectCuentas(clienteBeans));
 
+        tblCuentas.setModel(cuentasDatos.selectAll(id_cliente));
 
         btnMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
-
-
                 JFrame menu = new Menu(clienteBeans);
                 menu.setVisible(true);
-            }
-        });
-        btnConsultar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //Usar SQL_SELECT_CUENTA
-                modelo = cuentasDatos.selectCuentatbl(cmbCuentas.getSelectedItem().toString());
-                tblDatos.setModel(modelo);
             }
         });
     }
