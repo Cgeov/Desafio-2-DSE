@@ -15,6 +15,7 @@ public class Transaccion extends JFrame{
     private JButton btnObtenerTransaccion;
     private JTable tblDatosTransaccion;
     private JPanel pnlTransacciones;
+    private JButton btnMenu;
 
     DefaultTableModel modelo = null;
 
@@ -40,6 +41,14 @@ public class Transaccion extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 tblDatosTransaccion.setModel(transacionesDatos.selectTransactions(cbmCuentasTransaccion.getSelectedItem().toString()));
+            }
+        });
+        btnMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Menu menu = new Menu(clienteBeans);
+                menu.setVisible(true);
+                dispose();
             }
         });
     }

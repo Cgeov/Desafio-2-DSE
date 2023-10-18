@@ -25,7 +25,7 @@ public class VerCuentas extends JFrame {
         super();
 
         int id_cliente = clienteBeans.getIdCliente();
-        //JOptionPane.showMessageDialog(null, clienteBeans.getIdCliente());
+
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(pnlVerCuentas);

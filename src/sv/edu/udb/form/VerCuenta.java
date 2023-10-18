@@ -24,7 +24,6 @@ public class VerCuenta extends JFrame{
     public VerCuenta(ClienteBeans clienteBeans) {
 
         super();
-        JOptionPane.showMessageDialog(null, clienteBeans.toString());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(pnlVerCuenta);
         this.setMinimumSize(new Dimension(600, 300));

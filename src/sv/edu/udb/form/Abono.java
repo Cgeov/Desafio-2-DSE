@@ -4,7 +4,6 @@ import com.mysql.cj.util.StringInspector;
 import sv.edu.udb.beans.ClienteBeans;
 import sv.edu.udb.beans.CuentaBeans;
 import sv.edu.udb.datos.CuentasDatos;
-import sv.edu.udb.beans.TransaccionBeans;
 import sv.edu.udb.datos.TransacionesDatos;
 
 import javax.swing.*;
@@ -19,7 +18,6 @@ public class Abono extends JFrame{
     private JPanel jpnAbono;
     CuentasDatos cuentasDatos = new CuentasDatos();
     CuentaBeans cuentaBeans = new CuentaBeans();
-    TransaccionBeans transaccionBeans = new TransaccionBeans();
     TransacionesDatos transacionesDatos = new TransacionesDatos();
 
     String tipo_Transaccion = "Abono";
@@ -31,7 +29,6 @@ public class Abono extends JFrame{
         this.setLocationRelativeTo(getParent());
         cmbCuentaAbono.setModel(cuentasDatos.selectCuentas(clienteBeans));
 
-        transaccionBeans.setIdCuentaTransaccion(cuentaBeans.getIdCuenta());
         btnAbonar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,7 +46,6 @@ public class Abono extends JFrame{
                         float saldoNow = saldo + monto;
                         cuentasDatos.update(cmbCuentaAbono.getSelectedItem().toString(),saldoNow);
                         transacionesDatos.insert(cmbCuentaAbono.getSelectedItem().toString(), saldo, monto, tipo_Transaccion);
-                        //insertTransaccion(cuentaBeans);
                         JOptionPane.showMessageDialog(null,"Se realizó un abono por $" + monto + " su nuevo saldo es de: $"+ saldoNow);
                         JFrame menu = new Menu(clienteBeans);
                         menu.setVisible(true);
@@ -61,27 +57,6 @@ public class Abono extends JFrame{
     }
 
 
-    /*public void insertTransaccion(CuentaBeans cuentaBeans) {
-        int id =0;
-        String cuenta;
-        Float saldo_anterior;
-        Float cantidad;
-        String tipo;
-
-        cuenta = cuentaBeans.getIdCuenta();
-        saldo_anterior = cuentaBeans.getSaldoCuenta();
-        cantidad = Float.parseFloat(txtAbonoAmount.getText());
-        tipo = tipo_Transaccion;
-
-        transaccionBeans.setIdCuentaTransaccion(cuenta);
-        transaccionBeans.setSaldoAnteriorTransaccion(saldo_anterior);
-        transaccionBeans.setCantidadTransaccion(cantidad);
-        transaccionBeans.setTipoTransaccion(tipo);
-
-        JOptionPane.showMessageDialog(null, cuenta + saldo_anterior + cantidad + tipo);
-        //transacionesDatos.insert(transaccionBeans);
-
-    }*/
 }
 
 

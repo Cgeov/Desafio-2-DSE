@@ -73,6 +73,14 @@ public class Menu extends JFrame{
                 dispose();
             }
         });
+        verTransaccionesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Transaccion transaccion = new Transaccion(clienteBeans);
+                transaccion.setVisible(true);
+                dispose();
+            }
+        });
     }
 
     private void crearCuenta(){

@@ -2,6 +2,7 @@ package sv.edu.udb.form;
 
 import sv.edu.udb.beans.ClienteBeans;
 import sv.edu.udb.datos.CuentasDatos;
+import sv.edu.udb.datos.TransacionesDatos;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +17,8 @@ public class Retiro extends JFrame {
     private JPanel pnlRetiro;
 
     CuentasDatos cuentasDatos = new CuentasDatos();
+    TransacionesDatos transacionesDatos = new TransacionesDatos();
+    String tipo_Transaccion = "Retiro";
 
     public Retiro(ClienteBeans clienteBeans) {
         super();
@@ -43,6 +46,7 @@ public class Retiro extends JFrame {
                     }else{
                         float saldoNow = saldo - monto;;
                         cuentasDatos.update(cmbCuentasRetiro.getSelectedItem().toString(),saldoNow);
+                        transacionesDatos.insert(cmbCuentasRetiro.getSelectedItem().toString(), saldo, monto, tipo_Transaccion);
 
                         JOptionPane.showMessageDialog(null,"Se realizó un retiro por $" + monto + " su nuevo saldo es de: $"+ saldoNow);
 
