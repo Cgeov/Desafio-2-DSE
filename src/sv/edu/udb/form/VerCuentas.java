@@ -39,6 +39,7 @@ public class VerCuentas extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JFrame menu = new Menu(clienteBeans);
                 menu.setVisible(true);
+                dispose();
             }
         });
     }
